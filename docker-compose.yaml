@@ -1,0 +1,17 @@
+services:
+
+  backend:
+    build: ./fullstack-app/backend
+    container_name: flask-backend
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./fullstack-app/backend/data.json:/app/data.json
+
+  frontend:
+    build: ./fullstack-app/frontend
+    container_name: node-frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
